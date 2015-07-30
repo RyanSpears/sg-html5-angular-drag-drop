@@ -8,26 +8,28 @@
 </head>
 <body>
 <div ng-app="my-app" ng-controller="MainController">
-    <div class="container">
-        <header><h1>Draggables</h1></header>
-        <section>
-            <div draggable="true" ng-repeat="drag_type in drag_types">{{drag_type.name}}</div>
-        </section>
-    </div>
-    <div class="container">
-        <header><h1>Drop Stuff Here</h1></header>
-        <section droppable="true">
-            <div><span>You dragged in: </span>
-                <span ng-repeat="name in items">
-                    <span ng-show="$index != 0">,</span>
-                    {{name}}
-                </span>
-            </div>
-        </section>
-    </div>
+    <ul class="droppable-items">
+        <li ng-repeat="printer in printers" class="droppable-item">
+            <div id="{{ printer.id }}" draggable="true" droppable="true"  class="container">
+                <header><h1>{{printer.name }} [{{ printer.id }}]</h1></header>
+                <section class="content">
 
-    <button ng-click='sayHi()'>Say hi!</button>
-    <pre>{{items|json}}</pre>
+                </section>
+            </div>
+        </li>
+    </ul>
+
+    <ul class="droppable-items">
+        <li ng-repeat="device in devices" class="droppable-item">
+            <div id="{{ device.id }}" draggable="true" droppable="true" class="container">
+                <header><h1>{{device.name}} [{{ device.id }}]</h1></header>
+                <section class="content">
+
+                </section>
+            </div>
+        </li>
+    </ul>
+
 </div>
 
 </body>

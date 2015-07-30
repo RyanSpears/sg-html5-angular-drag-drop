@@ -24,14 +24,22 @@
     });
 
     app.controller('MainController', function($scope){
-        $scope.drag_types = [
-            {name: "Blue"},
-            {name: "Red"},
-            {name: "Green"},
+        $scope.printers = [
+            { name: "Printer 1", id: 1 },
+            { name: "Printer 2", id: 2 },
+            { name: "Printer 3", id: 3 }
         ];
+
+        $scope.devices = [
+            { name: "Device 1", id: 4 },
+            { name: "Device 2", id: 5 },
+            { name: "Device 3" , id: 6 }
+        ];
+
         $scope.items = [];
 
         $scope.handleDragStart = function(e){
+            console.log('started dragging ' + e.currentTarget.id);
             this.style.opacity = '0.4';
             e.dataTransfer.setData('text/plain', this.innerHTML);
         };
@@ -43,11 +51,11 @@
         $scope.handleDrop = function(e){
             e.preventDefault();
             e.stopPropagation();
+            console.log('dropped into ' + e.currentTarget.id);
             var dataText = e.dataTransfer.getData('text/plain');
             $scope.$apply(function() {
                 $scope.items.push(dataText);
             });
-            console.log($scope.items);
         };
 
         $scope.handleDragOver = function (e) {
