@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link href="style.css" rel="stylesheet" />
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="app.js"></script>
+</head>
+<body>
+<div ng-app="my-app" ng-controller="MainController">
+    <div class="container">
+        <header><h1>Draggables</h1></header>
+        <section>
+            <div draggable="true" ng-repeat="drag_type in drag_types">{{drag_type.name}}</div>
+        </section>
+    </div>
+    <div class="container">
+        <header><h1>Drop Stuff Here</h1></header>
+        <section droppable="true">
+            <div><span>You dragged in: </span>
+                <span ng-repeat="name in items">
+                    <span ng-show="$index != 0">,</span>
+                    {{name}}
+                </span>
+            </div>
+        </section>
+    </div>
+
+    <button ng-click='sayHi()'>Say hi!</button>
+    <pre>{{items|json}}</pre>
+</div>
+
+</body>
+</html>
